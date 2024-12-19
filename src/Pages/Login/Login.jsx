@@ -4,7 +4,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../Utility/axiosConfig";
-import "./login.css";
+import classes from "./Login.module.css";
 
 const Login = () => {
   const emailDom = useRef();
@@ -42,15 +42,15 @@ const Login = () => {
     }
   }
   return (
-    <section>
-      <div className="loginContainer">
+    <section className={classes.body}>
+      <div className={classes.loginContainer}>
         <h1>Login to your account</h1>
         <p>
           Don't have an account?
           <Link to="/register">Create new account</Link>
         </p>
-        <form className="loginForm" onSubmit={handleSubmit}>
-          <div className="inputContainer ">
+        <form className={classes.loginForm} onSubmit={handleSubmit}>
+          <div className={classes.inputContainer}>
             <input
               ref={emailDom}
               type="email"
@@ -59,19 +59,19 @@ const Login = () => {
             />
           </div>
           <br />
-          <div className="inputContainer">
+          <div className={classes.inputContainer}>
             <input
               ref={passwordDom}
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
             />
-            <span className="togglePassword" onClick={togglePasswordVisibility}>
+            <span className={classes.togglePassword} onClick={togglePasswordVisibility}>
               {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </span>
           </div>
-          <p className="forgotPassword">Forgot password?</p>
-          {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+          <p className={classes.forgotPassword}>Forgot password?</p>
+          {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>}
           <button type="submit">Login </button>
         </form>
       </div>
