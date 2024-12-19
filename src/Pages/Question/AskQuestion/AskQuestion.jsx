@@ -10,9 +10,9 @@ function AskQuestion() {
   const titleDom = useRef();
   const descriptionDom = useRef();
 
-  // Retrieve the token and userId from localStorage
+  // Retrieve the token from localStorage
   const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("userId");
+  
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +24,6 @@ function AskQuestion() {
       const response = await axiosInstance.post(
         "/question",
         {
-          userid: userId, // Pass userId dynamically
           title,
           description,
         },
