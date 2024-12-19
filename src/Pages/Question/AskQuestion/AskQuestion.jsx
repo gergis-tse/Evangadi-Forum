@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Swal from "sweetalert2";
 import classes from "./askQuestion.module.css";
 import { axiosInstance } from "../../../../utility/axios.js";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../Components/Layout/Layout.jsx";
 
 function AskQuestion() {
@@ -43,7 +43,7 @@ function AskQuestion() {
           icon: "success",
           confirmButtonText: "OK",
         });
-        navigate("/");
+        navigate("/Home");
       } else {
         console.error("Failed to create question");
         await Swal.fire({
@@ -116,9 +116,6 @@ function AskQuestion() {
                 <button className={classes.question__button} type="submit">
                   Post Question
                 </button>
-                <Link to="/Home" className={classes.link}>
-                  Go Home
-                </Link>
               </div>
             </form>
           </div>

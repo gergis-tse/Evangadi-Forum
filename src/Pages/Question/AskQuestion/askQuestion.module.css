@@ -79,6 +79,16 @@ body {
   font-size: 1.6rem;
   color: #0a6efa;
 }
+ .icon {
+  width: 15px; 
+  border-radius: 50%; 
+  background-color: rgb(54, 52, 52); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; 
+  font-size: 10px; 
+}
 
 /* Highlight Section */
 .highlight {
@@ -141,27 +151,8 @@ body {
   transform: translateY(-3px);
 }
 
-/* Link Button */
-.link {
-  background-color: #0a6efa;
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none; /* Remove underline for links */
-  margin-left: auto; /* Pushes the link to the right */
-  display: inline-block;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.link:hover {
-  background-color: #084dbf;
-  transform: translateY(-3px);
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -197,15 +188,5 @@ body {
   }
 }
 
-/* Icon Styling */
-.icon {
-  width: 15px; /* Adjust size of the circle */
-  height: 15px; /* Adjust size of the circle */
-  border-radius: 50%; /* Make it circular */
-  background-color: rgb(54, 52, 52); /* Black background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white; /* White color for the arrow */
-  font-size: 10px; /* Adjust size of the arrow */
-}
+
+
