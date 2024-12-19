@@ -3,7 +3,7 @@ import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
 import axios from "./Pages/Utility/axiosConfig";
 import Home from "./Pages/Home/Home";
-
+import Footer from "./Components/Footer/Footer";
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
 
 export const AppState = createContext();
@@ -33,13 +33,17 @@ function App() {
   }, []);
 
   return (
-    <AppState.Provider value={{ user, setUser }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/question" element={<AskQuestion />} />
-      </Routes>
-    </AppState.Provider>
+    <>
+      <AppState.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/question" element={<AskQuestion />} />
+        </Routes>
+        <Footer />
+      </AppState.Provider>
+      
+    </>
   );
 }
 
