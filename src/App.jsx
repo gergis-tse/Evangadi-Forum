@@ -1,12 +1,15 @@
-
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
 import axios from './Pages/Utility/axiosConfig';
 import Home from "./Pages/Home/Home";
+
 import Test from "./Pages/Test";
+import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
+
 
 export const AppState = createContext();
+
 
 
 
@@ -37,13 +40,16 @@ function App() {
   }, []);
 
   return (
+
     <AppState.Provider value={{ user, setUser }}>
+   
       <Routes>
 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login/>} />
-
+<Route path="/question" element={<AskQuestion />} />
         <Route path="" element={<Test />} />
+
         <Route path="" element={<Test />} />
         <Route path="" element={<Test />} />
 
