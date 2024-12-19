@@ -38,10 +38,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/question" element={<AskQuestion />} />
-        <Route path="" element={<Test />} />
-
-        <Route path="" element={<Test />} />
-        <Route path="" element={<Test />} />
       </Routes>
     </AppState.Provider>
   );

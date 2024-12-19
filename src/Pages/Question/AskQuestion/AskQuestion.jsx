@@ -42,7 +42,7 @@ function AskQuestion() {
           icon: "success",
           confirmButtonText: "OK",
         });
-        navigate("/Home");
+        navigate("/home");
       } else {
         console.error("Failed to create question");
         await Swal.fire({
