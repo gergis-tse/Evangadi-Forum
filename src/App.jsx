@@ -1,16 +1,12 @@
-
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
-import axios from './Pages/Utility/axiosConfig';
+import axios from "./Pages/Utility/axiosConfig";
 import Home from "./Pages/Home/Home";
 
+import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
 
 export const AppState = createContext();
-
-
-
-
 
 function App() {
   const [user, setUser] = useState({});
@@ -24,9 +20,9 @@ function App() {
           Authorization: `Bearer ${token}`,
         },
       });
-    setUser(data)
+      setUser(data);
     } catch (error) {
-      console.log (error.response?.data?.message || "An error occurred");
+      console.log(error.response?.data?.message || "An error occurred");
 
       navigate("/login");
     }
@@ -39,16 +35,15 @@ function App() {
   return (
     <AppState.Provider value={{ user, setUser }}>
       <Routes>
-
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-
-        <Route path="" element={<Test />} />
-        <Route path="" element={<Test />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/question" element={<AskQuestion />} />
         <Route path="" element={<Test />} />
 
+        <Route path="" element={<Test />} />
+        <Route path="" element={<Test />} />
       </Routes>
-    </AppState.Provider> 
+    </AppState.Provider>
   );
 }
 
