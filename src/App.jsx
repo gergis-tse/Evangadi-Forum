@@ -1,18 +1,18 @@
-import React, { createContext, useState } from "react";
-import Home from "./Pages/Home/Home"; // Adjusted path to match your folder structure
-import "./App.css"; // Your custom styles (if any)
-
-// Create the context
-export const UserState = createContext();
+import { Route, Routes } from "react-router-dom";
+import Test from "./Pages/Test";
+import Home from "./Pages/Home/Home";
 
 function App() {
-  // Define the user state
-  const [user, setUser] = useState({ username: "JohnDoe" }); // Example user state
-
   return (
-    <UserState.Provider value={{ user, setUser }}>
-      <Home /> {/* Now Home can use UserState context */}
-    </UserState.Provider>
+    <>
+      <h1>App</h1>
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="" element={<Test />} />
+        <Route path="" element={<Test />} />
+        <Route path="" element={<Test />} />
+      </Routes>
+    </>
   );
 }
 
