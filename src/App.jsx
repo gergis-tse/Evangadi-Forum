@@ -1,10 +1,13 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
-import axios from "./Pages/Utility/axiosConfig";
 import Home from "./Pages/Home/Home";
 
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
+
+import Landing from "./Pages/Landing/Landing";
+import Register from "./Pages/Sign-up/Register";
+import axiosBase from "./utility/axios";
 
 export const AppState = createContext();
 
@@ -15,7 +18,7 @@ function App() {
 
   async function checkUser() {
     try {
-      const { data } = await axios.get("/users/check", {
+      const { data } = await axiosBase.get("/users/check", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -24,7 +27,7 @@ function App() {
     } catch (error) {
       console.log(error.response?.data?.message || "An error occurred");
 
-      navigate("/login");
+      navigate("/");
     }
   }
 
@@ -35,13 +38,11 @@ function App() {
   return (
     <AppState.Provider value={{ user, setUser }}>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/question" element={<AskQuestion />} />
-        <Route path="" element={<Test />} />
-
-        <Route path="" element={<Test />} />
-        <Route path="" element={<Test />} />
+        <Route path="Register" element={<Register />} />
       </Routes>
     </AppState.Provider>
   );

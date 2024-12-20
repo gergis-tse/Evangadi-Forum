@@ -1,11 +1,5 @@
 import axios from "axios";
-
-const serverPort = import.meta.env.PORT || 5000;
-
-export const axiosInstance = axios.create({
-  //local endpoint reference
-  // baseURL: `http://localhost:${serverPort}/api/v1`,
-
-  // deployed endpoint reference
-  baseURL: "https://evangadiforumproject-vpsk.onrender.com/api/v1",
+const axiosBase = axios.create({
+  baseURL: "https://evangadi-forum-group4-team2-1.onrender.com/api/",
 });
+export default axiosBase;

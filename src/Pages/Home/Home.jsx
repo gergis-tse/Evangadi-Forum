@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./home.module.css"; // Ensure the CSS file is correctly linked
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { UserState } from "../../App"; // Import UserState from App.jsx
+// import { AppState } from "../../App"; // Import UserState from App.jsx
 import { AppState } from '../../App'
 function Home() {
   const { user } = useContext(AppState)

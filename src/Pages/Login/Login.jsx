@@ -3,7 +3,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../Utility/axiosConfig";
+import axiosBase from "../../utility/axios";
 import "./login.css";
 
 const Login = () => {
@@ -28,7 +28,7 @@ const Login = () => {
       return alert("Please enter a valid email address");
     }
     try {
-      const { data } = await axios.post("/users/login", {
+      const { data } = await axiosBase.post("/users/login", {
         email: emailvalue,
         password: passwordvalue,
       });
@@ -47,7 +47,7 @@ const Login = () => {
         <h1>Login to your account</h1>
         <p>
           Don't have an account?
-          <Link to="/register">Create new account</Link>
+          <Link to="">Create new account</Link>
         </p>
         <form className="loginForm" onSubmit={handleSubmit}>
           <div className="inputContainer ">
