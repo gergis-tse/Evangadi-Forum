@@ -5,6 +5,7 @@ import axios from "./Pages/Utility/axiosConfig";
 import Home from "./Pages/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
+import Signup from "./Pages/Signup";
 
 export const AppState = createContext();
 
@@ -37,6 +38,7 @@ function App() {
       <AppState.Provider value={{ user, setUser }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/question" element={<AskQuestion />} />
         </Routes>

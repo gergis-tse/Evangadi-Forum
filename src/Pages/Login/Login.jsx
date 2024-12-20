@@ -47,7 +47,7 @@ const Login = () => {
         <h1>Login to your account</h1>
         <p>
           Don't have an account?
-          <Link to="/register">Create new account</Link>
+          <Link to="/signup">Create new account</Link>
         </p>
         <form className={classes.loginForm} onSubmit={handleSubmit}>
           <div className={classes.inputContainer}>
