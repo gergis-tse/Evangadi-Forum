@@ -12,7 +12,7 @@ function Home() {
 				<div className={classes.container}>
 					<div className={classes.askQuestion}>
 						<div>
-							<Link to="/ask-question">
+							<Link to="/question">
 								<button
 									style={{
 										backgroundColor: "#3b82f6",

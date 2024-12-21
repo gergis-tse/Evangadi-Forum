@@ -5,13 +5,13 @@ import Home from "./Pages/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import Answer from "./Pages/Answers/Answer";
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
-import Signup from "./Pages/Signup";
+import Signup from "./Pages/Signup/Signup";
 import Header from "./Components/Header/Header";
 import Landing from "./Pages/Landing/Landing";
 import axiosBase from "./utility/axios";
 import About from "./Components/About/About";
 export const AppState = createContext();
-import Footer from "./Components/Footer/Footer"
+
 
 function App() {
 	const [user, setUser] = useState({});
@@ -38,22 +38,22 @@ function App() {
 	}, []);
 
   return (
+		<>
+			<AppState.Provider value={{ user, setUser }}>
+				<Header />
+				<Routes>
+					<Route path="/" element={<Landing />} />
+					<Route path="/home" element={<Home />} />
 
-    <>
-      <AppState.Provider value={{ user, setUser }}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        <Route path="/About" element={<About/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/question" element={<AskQuestion />} />
-        <Route path="/Signup" element={<Signup />} />
-        </Routes>
-        <Footer />
-      </AppState.Provider>
-    </>
-
-  );
+					<Route path="/About" element={<About />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/question" element={<AskQuestion />} />
+					<Route path="/Signup" element={<Signup />} />
+				</Routes>
+				<Footer />
+			</AppState.Provider>
+		</>
+	);
 }
 
 export default App;
