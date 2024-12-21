@@ -1,49 +1,54 @@
-import { useContext, useEffect, useState } from "react";
-import styles from "./home.module.css"; // Ensure the CSS file is correctly linked
-import { BsArrowRightSquareFill } from "react-icons/bs";
+import { useContext } from "react";
+import { AppState } from "../../App";
 import { Link } from "react-router-dom";
-  import { AppState } from '../../App'
+import AllQuestions from "../Question/AllQuestions/AllQuestions";
+import classes from "./Home.module.css";
+
 function Home() {
-  const { user,setUser } = useContext(AppState)
-  const userName = String(user?.username); 
-  const [greeting, setGreeting] = useState("");
-
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) {
-      setGreeting("Good Morning");
-    } else if (hour >= 12 && hour < 17) {
-      setGreeting("Good Afternoon");
-    } else if (hour >= 17 && hour < 21) {
-      setGreeting("Good Evening");
-    } else {
-      setGreeting("Good Evening");
-    }
-  }, []);
-
-  return (
-    <div className={styles.home_container}>
-      <div className={styles.ask_welcome_holder}>
-        <div className={styles.ask_question}>
-          <Link to="/ask" style={{ textDecoration: "none" }}>
-            <button className={styles.ask_btn}>
-              <span>I've got a question</span>
-              <BsArrowRightSquareFill size={20} />
-            </button>
-          </Link>
-        </div>
-        <div className={styles.welcome_msg}>
-          <p>
-            {greeting}{" "}
-            <span className={styles.userName}>
-              {userName.charAt(0).toUpperCase() + userName.slice(1)}
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+	const { user } = useContext(AppState);
+	return (
+		<div className={classes.outerContainer}>
+			<div>
+				<div className={classes.container}>
+					<div className={classes.askQuestion}>
+						<div>
+							<Link to="/question">
+								<button
+									style={{
+										backgroundColor: "#3b82f6",
+										color: "#fff",
+										fontWeight: "bold",
+										padding: "8px 16px",
+										borderRadius: "5px",
+									}}
+								>
+									Ask Question
+								</button>
+							</Link>
+						</div>
+						<h3 className={classes.welcome}>
+							Welcome:
+							<span style={{ fontWeight: "bold" }}> {user.username}</span>
+						</h3>
+					</div>
+					<div>
+						<input
+							type="text"
+							placeholder="search question"
+							style={{
+								width: "100%",
+								border: "1px solid gray",
+								borderRadius: "2px",
+								padding: "5px",
+								marginTop: "20px",
+							}}
+						/>
+					</div>
+					<AllQuestions />
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Home;
-
