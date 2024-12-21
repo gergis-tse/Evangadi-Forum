@@ -25,8 +25,8 @@ function Answer() {
       const response = await api({
         url: `/question/${question_id}`,
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       });
 
       setQuestion(response?.data?.questions[0]);
@@ -39,8 +39,8 @@ function Answer() {
     try {
       const allAnswerList = await api.get(`/answer/${question_id}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       });
 
       const answerData = allAnswerList.data.answers;
@@ -71,15 +71,15 @@ function Answer() {
         { answer: sendAns, questionid: question_id },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         }
       );
       alert("Answer posted successfully!");
 
       // allQuestions();
       setsendAns("");
-      setError3("")
+      setError3("");
       allQuestions();
     } catch (error) {
       setError3(error?.response?.data?.message);
@@ -97,23 +97,22 @@ function Answer() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h4>Question</h4>
-        <p className={styles.answerUser}>
-          Username: <span>{user.username}</span>
-        </p>
-        <h6>
-          <p>
+        <div className={styles.username}>
+          <h4>Question</h4>
+          <div className={styles.user}>
+            Username: <span>{user.username}</span>
+          </div>
+        </div>
+          <div className={styles.arrow}>
             <span>
               <FaCircleArrowRight />
             </span>
             {question?.title}
-          </p>
-          <p>{question?.description}</p>
-        </h6>
-        <hr />
-
-        <div>
-          <h3 className="communityAns">Answers from the Community</h3>
+          </div>
+          <div className={styles.desc}>{question?.description}</div>
+<hr />
+        <div className="communityAns">
+          <h3 className={styles.community}>Answers from the Community</h3>
           <hr />
         </div>
         <div className={styles.AllAns}>
@@ -122,13 +121,13 @@ function Answer() {
               <div key={answer.answer_id}>
                 <div className={styles.AnswerPg}>
                   {/* User Avatar and Name */}
-                  <div>
-                    <h1>{<FaUserAlt />}</h1>
+                  <div className={styles.avatar}>
+                    {<FaUserAlt className={styles.avatar_img}/>}
                     <div>{answer.user_name}</div>
                   </div>
 
-                  <div>
-                    <p>{answer.content}</p>
+                  <div className={styles.content}>
+                    {answer.content}
                   </div>
                 </div>
               </div>
@@ -139,8 +138,8 @@ function Answer() {
         </div>
 
         <div className={styles.answer_form}>
-          <h4 className="text-center mb-5">Your Answer</h4>
-          {error3 && <span style={{color:"red"}}>{error3}</span>}
+          <h4 className={styles.urAns}>Your Answer</h4>
+          {error3 && <span style={{ color: "red" }}>{error3}</span>}
           <form onSubmit={sendAnswers}>
             <textarea
               className="form-control"
