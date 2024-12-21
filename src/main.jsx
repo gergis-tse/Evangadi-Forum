@@ -9,8 +9,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
 
-      {/* Wrap your App component with BrowserRouter */}
-      <App />
+     <App />
     </BrowserRouter>
   </StrictMode>
 );

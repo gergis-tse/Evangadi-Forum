@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Swal from "sweetalert2";
 import classes from "./askQuestion.module.css";
-import { axiosInstance } from "../../../../utility/axios.js";
+import axiosBase from "../../../utility/axios.js";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../../Components/Layout/Layout.jsx";
 
@@ -21,7 +21,7 @@ function AskQuestion() {
 
     try {
       // Make a POST request to your server to create a new question
-      const response = await axiosInstance.post(
+      const response = await axiosBase.post(
         "/question",
         {
           title,
