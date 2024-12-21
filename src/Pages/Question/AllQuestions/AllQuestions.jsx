@@ -51,49 +51,46 @@ function AllQuestions() {
 	}
 
 	return (
-		<>
-			{questions?.map((question) => (
-				<Link
-					to={`/question/${question.question_id}`}
-					key={question.questionid}
-					style={{ textDecoration: "none", color: "black" }}
-				>
-					<div className={classes.groupEach_Questions}>
-						<div className={classes.each_Questions}>
-							<div className={classes.question}>
-								<div>
-									<FaUserAlt
-										style={{
-											textsize: "64px",
-											border: "black",
-											borderRadius: "5px",
-											padding: "8px",
-										}}
-									/>
-								</div>
-								<div className={classes.question_title}>{question.title}</div>
-							</div>
-							<div>
-								<MdNavigateNext
-									style={{
-										textSize: "48PX",
-										font: "bold",
-										marginRight: "20px",
-										transition: "all",
-										transitionDuration: "500",
-									}}
-								/>
-							</div>
-						</div>
-						<div className={classes.avator}>
-							<AccountCircleIcon />
-						</div>
-						<p>{question?.user_name}</p>
-					</div>
-				</Link>
-			))}
-		</>
-	);
+    <>
+      {questions?.map((question) => (
+        <Link
+          to={`/question/${question.question_id}`}
+          key={question.questionid}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className={classes.groupEach_Questions}>
+            <div className={classes.each_Questions}>
+              <div className={classes.question}>
+                {/* Profile icon with circular border */}
+                <div className="profile-icon">
+                  <FaUserAlt />
+                </div>
+                <div className={classes.question_title}>{question.title}</div>
+              </div>
+
+              {/* Navigation arrow */}
+              <MdNavigateNext
+                style={{
+                  fontSize: "24px", // Corrected textSize to fontSize
+                  fontWeight: "bold", // Changed font to fontWeight
+                  marginRight: "20px",
+                  transition: "all 0.5s ease", // Simplified transition
+                }}
+              />
+            </div>
+
+            <div className={classes.avator}>
+              {/* Another profile icon with circular border */}
+              <div className="profile-icon">
+                <AccountCircleIcon />
+              </div>
+            </div>
+            <p>{question?.user_name}</p>
+          </div>
+        </Link>
+      ))}
+    </>
+  );
 }
 
 export default AllQuestions;
