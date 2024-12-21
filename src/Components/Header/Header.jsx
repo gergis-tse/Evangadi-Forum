@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "../../assets/Images/logo.png";
 import styles from "./Header.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../Pages/Utility/axiosConfig";
+import { AppState } from "../../App";
 const Header = () => {
-  const [userDatas, setUserDatas] = useState({});
+  const {user,setUser} = useContext(AppState);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  console.log(token);
-
-  const handleCheck = async () => {
-    if (!token) return;
-    try {
-      const { data } = await api.get("users/check", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setUserDatas(data);
-      console.log("user data", data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-  useEffect(() => {
-    handleCheck();
-    console.log(userDatas);
-  }, [token]);
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setUserDatas({});
+    setUser({});
     navigate("/");
   };
   return (

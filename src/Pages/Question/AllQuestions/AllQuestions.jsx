@@ -15,11 +15,6 @@ function AllQuestions() {
 	const navigate = useNavigate(); // To handle redirects if token is missing
 
 	useEffect(() => {
-		if (!token) {
-			navigate("/login"); // Redirect to login page if no token
-			return;
-		}
-
 		const fetchQuestions = async () => {
 			try {
 				const response = await axios({
