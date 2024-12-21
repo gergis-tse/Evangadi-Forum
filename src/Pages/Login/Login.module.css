@@ -1,26 +1,23 @@
 /* General styles */
 
-body {
-      font-family: poppins, sans-serif;
-      background-color: #f9fafb;
+.body {
+     
+      background-color: white;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding-top: 50px;
+      
 }
 
-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: poppins, sans-serif;
-}
+
 
 .loginContainer {
       background: #fff;
       padding: 40px;
       width: 500px;
+      height: 70vh;
       text-align: center;
 }
 
@@ -75,8 +72,8 @@ input:focus {
 
 .togglePassword {
       position: absolute;
-      right: 12px;
-      top: 50%;
+      right: 24px;
+      top: 60%;
       transform: translateY(-50%);
       cursor: pointer;
       color: #94a3b8;
@@ -118,7 +115,7 @@ button:hover {
   background-color: #4f46e5;
 }
 
-.error {
+.errorMessage {
       color: #e53e3e;
       font-size: 0.9rem;
       margin-bottom: 10px;

@@ -1,14 +1,11 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
-import Home from "./Pages/Home/Home";
-
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
-
+import Signup from "./Pages/Signup";
 import Landing from "./Pages/Landing/Landing";
-import Register from "./Pages/Sign-up/Register";
 import axiosBase from "./utility/axios";
-
+import About from "./Components/About/About";
 export const AppState = createContext();
 
 function App() {
@@ -27,7 +24,7 @@ function App() {
     } catch (error) {
       console.log(error.response?.data?.message || "An error occurred");
 
-      navigate("/");
+      // navigate("/");
     }
   }
 
@@ -39,10 +36,10 @@ function App() {
     <AppState.Provider value={{ user, setUser }}>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home/>} />
+        <Route path="/About" element={<About/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/question" element={<AskQuestion />} />
-        <Route path="Register" element={<Register />} />
+        <Route path="/Signup" element={<Signup />} />
       </Routes>
     </AppState.Provider>
   );
