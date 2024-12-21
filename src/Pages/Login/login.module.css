@@ -1,4 +1,4 @@
-/* General styles */
+
 
 body {
       font-family: poppins, sans-serif;
@@ -22,6 +22,9 @@ section {
       padding: 40px;
       width: 500px;
       text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      margin-left: 40px;
 }
 
 .loginContainer h1 {
@@ -47,7 +50,7 @@ section {
       text-align: left;
 }
 input {
-      width: 96%;
+      width: 100%;
       padding: 12px 0px;       
       padding-left: 15px;   
       border: 2px solid #e2e8f0;

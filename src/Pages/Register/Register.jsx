@@ -1,157 +1,169 @@
-import React from 'react'
-import { useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import axios from '../../Pages/Utility/axiosConfig'
+import React, { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import classes from "./Signup.module.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import axiosBase from "../../utility/axios";
 
+const  Signup=({ onToggle}) =>{
+  const [showpassword, setShowpassword] = useState(false);
 
-import classes from './register.module.css'
-const Register = () => {
-      const navigate = useNavigate()
-      const userNameDom = useRef()
-      const firstNameDom = useRef()
-      const lastNameDom = useRef()
-      const emailDom = useRef()
-      const passwordDom = useRef()
-      const [errorMessage, setErrorMessage] = useState('')
-      const [showPassword, setShowPassword] = useState(false)
-      const [isSbmitting, setIsSubmitting] = useState(false)
-      const [message, setMessage] = useState('')
+  const navigate = useNavigate();
+  const userNameDom = useRef();
+  const firstNameDom = useRef();
+  const lastNameDom = useRef();
+  const emailDom = useRef();
+  const passwordDom = useRef();
+  const [errorMessage, setErrorMessage] = useState("");
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setErrorMessage("");
+    const userValue = userNameDom.current.value;
+    const emailValue = emailDom.current.value;
+    const passwordValue = passwordDom.current.value;
+    const firstnameValue = firstNameDom.current.value;
+    const lastnameValue = lastNameDom.current.value;
+
+    try {
+      await axiosBase.post("/users/register", {
+        username: userValue,
+        email: emailValue,
+        password: passwordValue,
+        firstname: firstnameValue,
+        lastname: lastnameValue,
+      });
       
+      alert("User registered successfully. Please login");
 
-            // const togglePasswordVisibility = () => {
-            //       setShowPassword((prev) => !prev);
-            // };
+      navigate("/login");
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || "Registration failed");
+    }
+  }
+  return (
+    <section>
+      <div className="card">
+        <div className="card-body">
+          <div className="text-center">
+            <b>Join the network</b>
+          </div>
+          <div className="text-center mb-3">
+            Already have an account?{" "}
+            <span
+              onClick={onToggle}
+              style={{
+                color: "#DA7000",
+                cursor: "pointer",
+              }}
+            >
+              {/* Login here */}
+              sign in
+              {/* <a href=""> Sign in </a> */}
+              {/* <Link to='/login'> Sign in</Link>  */}
+            </span>
+          </div>
+          {errorMessage && (
+            <span
+              style={{ color: "red", position: "relative", padding: "0 60px" }}
+            >
+              {errorMessage}
+            </span>
+          )}
+          <form onSubmit={handleSubmit}>
+            <input
+              ref={userNameDom}
+              placeholder="Username"
+              type="text"
+              name="username"
+              id=""
+              className="form-control"
+            />
+            <br />
+            <div className="row">
+              <div class="col-md-6">
+                <input
+                  ref={firstNameDom}
+                  placeholder="Firstname"
+                  type="text"
+                  name="firstname"
+                  id=""
+                  className="form-control"
+                />
+              </div>
+              <div class="col-md-6">
+                <input
+                  ref={lastNameDom}
+                  placeholder="Lastname"
+                  type="text"
+                  name="lastname"
+                  id=""
+                  className="form-control"
+                />
+              </div>
+            </div>
+            <br />
+            <input
+              ref={emailDom}
+              placeholder="Email Address"
+              type="email"
+              name="email"
+              id=""
+              className="form-control"
+            />
+            <br />
+            <div className={classes.password_container}>
+              <input
+                ref={passwordDom}
+                placeholder="Password"
+                type={showpassword ? "text" : "password"}
+                name="password"
+                id=""
+                className="form-control"
+              />
+              <br />
+              <div
+                className={classes.password}
+                onClick={() => setShowpassword((prev) => !prev)}
+              >
+                {showpassword ? <FaEye /> : <FaEyeSlash />}
+              </div>
+            </div>
 
-
-      async function handleSubmit (e) {
-            e.preventDefault()    
-            const userValue = userNameDom.current.value;
-            const emailValue = emailDom.current.value;
-            const passwordValue = passwordDom.current.value;
-            const firstnameValue = firstNameDom.current.value;
-            const lastnameValue = lastNameDom.current.value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email  format
-
-            if (!userValue || !emailValue || !passwordValue || !firstnameValue || !lastnameValue) {
-                  // return alert('Please fill all fields')
-                  return setErrorMessage('Please fill all fields')
-            }
-            if (!emailRegex.test(emailValue)) {
-                  return alert('Please enter a valid email address')
-            }
-            try {
-                  await axios.post('/users/register', {
-                        username: userValue,
-                        email: emailValue,
-                        password: passwordValue,
-                        firstname: firstnameValue,
-                        lastname: lastnameValue
-                  })
-                  setMessage('User registered successfully. Please login')
-                  console.log('User registered successfully. Please login');
-                  
-                  navigate('/login')
-            } catch (error) {
-                  setErrorMessage(error.response?.data?.message || 'Registration failed')
-            }
-            finally {
-                  setIsSubmitting(false)
-            }            
-      }
-      return (
-            <section className={classes.registerSection}>
-                  <div className={classes.registerContainer}>
-                  <h3>
-                        Join the network  <br />                       
-                  </h3>
-                  <p> Already have an account? <Link to='/login'> Sign in</Link> </p>
-                  {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-                  {/* {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>} */}
-
-                  <form className= {classes.username} onSubmit={handleSubmit}>
-                        <div className={classes.inputContainer}>                             
-                              <input
-                                    name='username'
-                                    ref={userNameDom}
-                                    type="text" 
-                                    placeholder='Username'
-                                    aria-label='Username'
-                                    required
-                                    />
-                                    
-                        </div>
-                        <br />
-                        <div className={classes.inputGroup}>
-                              <input
-                                    name='firstname' 
-                                    ref={firstNameDom}
-                                    type="text" 
-                                    placeholder='First Name'
-                                    className={classes.fname_inputContainer}
-                                    required
-                                    />
-                                    {/* className={classes.fname_inputContainer} */}
-                              <input
-                                    className={classes.lname_inputContainer}
-                                    ref={lastNameDom} 
-                                    type="text" 
-                                    placeholder='Last Name'
-                                    required
-                                    />
-                        </div>
-                        <br />
-                        <div className={classes.inputContainer}>
-                              <input 
-                                    ref={emailDom} 
-                                    type="email" 
-                                    placeholder='Email'
-                                    required
-                                    />
-                        </div>
-                        <br />
-                        <div className={classes.inputContainer}>
-                              <input 
-                                    ref={passwordDom} 
-                                    type={showPassword? "text" : "password" }
-                                    placeholder='Password'/>
-                              <span 
-                                    className={classes.togglePassword} 
-                                    
-                                    onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon 
-                                    
-                                    />}
-                              </span>      
-
-                              {/* <span className={classes.togglePassword} onClick={togglePasswordVisibility}>
-                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-
-                              </span> */}
-
-                        </div>
-                        <br />
-                        <label 
-                              className={classes.privacyPolicy}>
-                                    I agree to the  <a href="https://www.evangadi.com/legal/privacy/">privacy policy </a> and <a href=" https://www.evangadi.com/legal/terms/">terms of service</a> 
-                        </label>
-                        <br />
-                        <br />
-                        <button 
-                              className={classes.submitButton} 
-                              type='submit' 
-                              disabled={isSbmitting} >
-                                    {isSbmitting ? 'Submitting...' : 'Agree and Join'}
-                        </button>
-                  </form>
-                  <div className={classes.loginLink}>
-                        <p> <Link to="/login">Already have an account? </Link></p>                
-                  </div>
-                  {/* {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>} */}
-                  </div>                  
-            </section>
-  )
+            <p>
+              I agree to the{" "}
+              <Link
+                to={"https://www.evangadi.com/legal/privacy/"}
+                style={{ color: "#ff8500" }}
+              >
+                privacy policy{" "}
+              </Link>
+              and{" "}
+              <Link
+                to={"https://www.evangadi.com/legal/terms/"}
+                style={{ color: "#ff8500" }}
+              >
+                terms of service
+              </Link>
+            </p>
+            <p>
+              <button type="submit" className={classes.btnsignup}>
+                Agree and Join
+              </button>
+            </p>
+            <p>
+              <Link
+                style={{ color: "#ff8500", textDecoration: "none" }}
+                to="/login"
+              >
+                Already have account?
+              </Link>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Register
+export default Signup;
