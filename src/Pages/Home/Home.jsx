@@ -4,20 +4,6 @@ import { Link } from "react-router-dom";
 import AllQuestions from "../Question/AllQuestions/AllQuestions";
 import classes from "./Home.module.css";
 
-<<<<<<< HEAD
-const Home = () => {
-      const { user } = useContext(AppState)
-      console.log(user)
-      return (
-            <>
-                  <h1>Home Page</h1>
-                  <br />
-                  <br />
-                  <h2> Welcome: {user?.username} </h2>
-
-            </>
-  )
-=======
 function Home() {
 	const { user } = useContext(AppState);
 	return (
@@ -63,7 +49,6 @@ function Home() {
 			</div>
 		</div>
 	);
->>>>>>> 08fffca24b7ba34d324e1adbb561dedc094039fb
 }
 
 export default Home;

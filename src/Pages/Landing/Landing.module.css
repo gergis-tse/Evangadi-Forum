@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
@@ -55,33 +54,3 @@
   
 }
 
-=======
-.xyz{
-    background-image: url("../../../public/10001\ \(2\).svg");
-    background-size: cover;
-    background-color:#F8F8F8 ;
-    
-    
-}
-.signup_login{
-width: 80% !important;
-height: 1000vh !important;
-background-color: red !important;
-z-index: 1;
-}
-
-/* Container for the sliding effect */
-.slide {
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* When the container is active, we move it */
-.slide-left {
-  transform: translateX(-100%);
-}
-
-.slide-right {
-  transform: translateX(100%);
-}
->>>>>>> 08fffca24b7ba34d324e1adbb561dedc094039fb

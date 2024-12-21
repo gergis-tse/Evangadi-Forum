@@ -9,5 +9,13 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  margin-top: 15vh !important;
 
+}
+@media screen and (max-width: 767px) {
+  body {
+    /* margin-top: 25vh !important; */
+   
+  }
+  
 }
