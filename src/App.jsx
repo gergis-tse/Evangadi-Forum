@@ -2,11 +2,12 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { React, useState, useEffect, createContext } from "react";
 import Login from "./Pages/Login/Login";
 import AskQuestion from "./Pages/Question/AskQuestion/AskQuestion";
-import Signup from "./Pages/Signup";
+import Signup from "./Pages/SignUp/Signup";
 import Landing from "./Pages/Landing/Landing";
 import axiosBase from "./utility/axios";
 import About from "./Components/About/About";
 export const AppState = createContext();
+import Footer from "./Components/Footer/Footer"
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,7 +41,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/question" element={<AskQuestion />} />
         <Route path="/Signup" element={<Signup />} />
+
       </Routes>
+      <Footer/>
     </AppState.Provider>
   );
 }

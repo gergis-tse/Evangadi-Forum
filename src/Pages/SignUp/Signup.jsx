@@ -4,7 +4,7 @@ import classes from "./Signup.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import axiosConfig from "../Utility/axiosConfig";
+import axiosBase from "../../utility/axios";
 
 const  Signup=({ onToggle}) =>{
   const [showpassword, setShowpassword] = useState(false);
