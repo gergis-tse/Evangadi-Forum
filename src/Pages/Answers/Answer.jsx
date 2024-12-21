@@ -1,116 +1,114 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../Utility/axiosConfig";
 import styles from "./Answer.module.css";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
+import { AppState } from "../../App";
 
 function Answer() {
   const navigate = useNavigate();
   const { question_id } = useParams();
 
-  const [userDatas, setUserDatas] = useState({});
+  const { user, setUser } = useContext(AppState);
   const [answers, setAnswers] = useState([]);
   const [title, setTitle] = useState([]);
   const [sendAns, setsendAns] = useState("");
-
+  const [error1, setError1] = useState(null);
+  const [error2, setError2] = useState(null);
+  const [error3, setError3] = useState(null);
+  const [question, setQuestion] = useState(null);
   const token = localStorage.getItem("token");
 
-  const handleCheck = async () => {
+  const fetchQuestions = async () => {
     try {
-      if (!token) {
-        alert("No token found. Please log in.");
-        navigate("/login");
-        return;
-      }
-
-      const { data } = await api.get("/users/check", {
+      const response = await api({
+        url: `/question/${question_id}`,
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-      setUserDatas(data);
+
+      setQuestion(response?.data?.questions[0]);
     } catch (error) {
-      console.error("Authentication error:", error);
-      alert("Authentication failed. Please log in again.");
-      navigate("/login");
+      setError1(error?.response?.data?.message);
     }
   };
+
   const allQuestions = async () => {
     try {
-      const allAnswerList = await api.get("/answer/allanswers", {
+      const allAnswerList = await api.get(`/answer/${question_id}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      const answerData = allAnswerList.data.allAnswers;
-      const allAnswers = answerData.filter(
-        (answer) => String(answer.question_id) === question_id
-      );
-      setAnswers(allAnswers);
-      setTitle(allAnswers);
+      const answerData = allAnswerList.data.answers;
+      console.log(answerData);
+
+      // const allAnswers = answerData.filter(
+      //   (answer) => String(answer.question_id) === question_id
+      // );
+      setAnswers(answerData);
     } catch (error) {
       console.log(error);
+      setError2(error?.response?.data?.message);
     }
   };
-
-  useEffect(() => {
-    handleCheck();
-    allQuestions();
-  }, [question_id]);
 
   const sendAnswers = async (e) => {
     e.preventDefault();
 
     if (!sendAns.trim()) {
-      alert.error("Answer field cannot be empty!");
+      setError3("Answer field cannot be empty!");
       return;
     }
 
     try {
       // Post a new answer
       const postAns = await api.post(
-        `/answer/${question_id}`,
-        { answer: sendAns },
+        `/answer`,
+        { answer: sendAns, questionid: question_id },
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       alert("Answer posted successfully!");
 
-      allQuestions();
+      // allQuestions();
       setsendAns("");
+      setError3("")
+      allQuestions();
     } catch (error) {
-      console.error("Error submitting answer:", error);
-      alert("An error occurred while saving the answer!");
+      setError3(error?.response?.data?.message);
     }
   };
-  const titleDescription = title.length > 0 ? title[0] : null;
 
-  if (!userDatas || !titleDescription) {
-    return (
-      <div className={styles.error}>Failed to load question or user data.</div>
-    );
-  }
+  useEffect(() => {
+    {
+      allQuestions();
+      fetchQuestions();
+    }
+  }, []);
+  console.log(question);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <h4>Question</h4>
         <p className={styles.answerUser}>
-          Username: <span>{userDatas.username}</span>
+          Username: <span>{user.username}</span>
         </p>
         <h6>
           <p>
             <span>
               <FaCircleArrowRight />
             </span>
-            {titleDescription.title}
+            {question?.title}
           </p>
-          <p>{titleDescription.description}</p>
+          <p>{question?.description}</p>
         </h6>
         <hr />
 
@@ -126,11 +124,11 @@ function Answer() {
                   {/* User Avatar and Name */}
                   <div>
                     <h1>{<FaUserAlt />}</h1>
-                    <div>{answer.username}</div>
+                    <div>{answer.user_name}</div>
                   </div>
 
                   <div>
-                    <p>{answer.answer}</p>
+                    <p>{answer.content}</p>
                   </div>
                 </div>
               </div>
@@ -142,6 +140,7 @@ function Answer() {
 
         <div className={styles.answer_form}>
           <h4 className="text-center mb-5">Your Answer</h4>
+          {error3 && <span style={{color:"red"}}>{error3}</span>}
           <form onSubmit={sendAnswers}>
             <textarea
               className="form-control"
@@ -152,8 +151,7 @@ function Answer() {
               value={sendAns}
               onChange={(e) => setsendAns(e.target.value)}
             ></textarea>
-
-            <button type="submit">
+            <button type="submit" style={{ backgroundColor: "blue" }}>
               Post Your Answer
             </button>
           </form>
