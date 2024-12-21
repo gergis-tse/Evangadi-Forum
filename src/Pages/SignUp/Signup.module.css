@@ -1,29 +1,7 @@
-* {
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
-  }
-  
-  
-  .title {
-    font-size: 45px;
-    color: #4b456f;
-    line-height: 56px;
-    font-weight: 600;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
-    background-image: linear-gradient(310deg, #000000, #e33f00);
-  }
-  p.font {
-    color: #656565;
-    font-size: 15px;
-    line-height: 28px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
+.card{
+   width: 500px;
+      height: 70vh;
+}
   .btnblue {
     color: #fff !important;
     background-color: #fe8402;
@@ -56,13 +34,6 @@
     cursor: pointer;
   }
   
-  /* For the password container, .password_container ensures the eye icon is placed correctly inside the input field.
-  The .password class positions the eye icon at the right of the password input, making it clickable.
-  Buttons and Links:
-  .btnsignup styles the "Agree and Join" button with background color, padding, and rounded corners.
-  Links inside the form have an orange color (#ff8500) which changes on hover.
-  Responsive Design:
-  The media query ensures that the form looks good on mobile screens by stacking the columns and hiding unnecessary elements.
-  This CSS will help style your form neatly and responsively. */
+ 
   
   

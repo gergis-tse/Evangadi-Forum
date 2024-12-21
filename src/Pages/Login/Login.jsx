@@ -3,10 +3,10 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../Utility/axiosConfig";
+import axiosBase from "../../utility/axios";
 import classes from "./Login.module.css";
 
-const Login = () => {
+const Login = ({ onToggle }) => {
   const emailDom = useRef();
   const passwordDom = useRef();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Login = () => {
       return alert("Please enter a valid email address");
     }
     try {
-      const { data } = await axios.post("/users/login", {
+      const { data } = await axiosBase.post("/users/login", {
         email: emailvalue,
         password: passwordvalue,
       });
@@ -41,42 +41,64 @@ const Login = () => {
       console.log(errorMsg);
     }
   }
-  return (
-    <section className={classes.body}>
-      <div className={classes.loginContainer}>
-        <h1>Login to your account</h1>
-        <p>
-          Don't have an account?
-          <Link to="/signup">Create new account</Link>
-        </p>
-        <form className={classes.loginForm} onSubmit={handleSubmit}>
-          <div className={classes.inputContainer}>
-            <input
-              ref={emailDom}
-              type="email"
-              placeholder="Email address"
-              required
-            />
+  
+    return (
+      <section className={classes.body}>
+        <div className={classes.loginContainer}>
+          <div>
+            <h1>
+              <b>Login to your account</b>
+            </h1>
+            <p>
+              Don't have an account?{" "}
+              <span
+                onClick={onToggle}
+                style={{
+                  color: "red",
+                  cursor: "pointer",
+                }}
+              >
+                Create new account
+              </span>
+            </p>
           </div>
-          <br />
-          <div className={classes.inputContainer}>
-            <input
-              ref={passwordDom}
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              required
-            />
-            <span className={classes.togglePassword} onClick={togglePasswordVisibility}>
-              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </span>
-          </div>
-          <p className={classes.forgotPassword}>Forgot password?</p>
-          {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>}
-          <button type="submit">Login </button>
-        </form>
-      </div>
-    </section>
-  );
-};
+
+          <form className={classes.loginForm} onSubmit={handleSubmit}>
+            <div className={classes.inputContainer}>
+              <input
+                ref={emailDom}
+                type="email"
+                placeholder="Email address"
+                required
+              />
+            </div>
+            <br />
+            <div className={classes.inputContainer}>
+              <input
+                ref={passwordDom}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+              />
+              <span
+                className={classes.togglePassword}
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </span>
+            </div>
+            <p className={classes.forgotPassword} style={{ color: "red" }}>
+              Forgot password?
+            </p>
+            {errorMessage && (
+              <p className={classes.errorMessage}>{errorMessage}</p>
+            )}
+            <button type="submit">Login </button>
+          </form>
+        </div>
+      </section>
+    );
+  };
+
 
 export default Login;
