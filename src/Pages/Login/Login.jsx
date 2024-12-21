@@ -4,7 +4,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../Utility/axiosConfig";
-import "./login.css";
+// import "./login.css";
+import classes from "./login.module.css";
+
 
 const Login = () => {
       const emailDom = useRef()
@@ -13,6 +15,8 @@ const Login = () => {
       const [showPassword, setShowPassword] = React.useState(false)
       const [errorMessage, setErrorMessage] = React.useState('')
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email  format
+      const [isSubmitting, setIsSubmitting] = React.useState(false)
+
 
       const togglePasswordVisibility = () => {
             setShowPassword((prev) => !prev)
@@ -44,14 +48,14 @@ const Login = () => {
       }
       return (
             <section>
-                  <div className="loginContainer">
+                  <div className={classes.loginContainer}>
                         <h1>Login to your account</h1>
                         <p>
-                              Dont have an account?{" "}
+                              Don't have an account?{" "}
                               <Link to="/register">Create new account</Link>
                         </p>
-                        <form className="loginForm" onSubmit={handleSubmit}>                       
-                              <div className='inputContainer '>
+                        <form className={classes.loginForm} onSubmit={handleSubmit}>                       
+                              <div className={classes.inputContainer}> 
                                     <input 
                                           ref={emailDom} 
                                           type="email" 
@@ -59,21 +63,25 @@ const Login = () => {
                                           required/>
                               </div>
                               <br />
-                              <div className="inputContainer">   
+                              <div className={classes.inputContainer}>  
                                     <input 
                                           ref={passwordDom} 
                                           type={showPassword? 'text': "password"} 
                                           placeholder='Password'
                                           required/>
                                     <span 
-                                          className="togglePassword" 
+                                          className={classes.togglePassword}
                                           onClick={togglePasswordVisibility}> 
                                                 {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                                     </span>
                               </div>
-                              <p  className="forgotPassword">Forgot password?</p>
-                              {errorMessage && <p className="errorMessage">{errorMessage}</p>}
-                              <button type='submit'>Login </button>
+                              <div className={classes.forgotPasswordContainer}>
+                                    <Link to="/forgot-password"  className={classes.forgotPassword} >Forgot password?</Link>
+
+                              </div>
+                              {/* <Link to="/forgot-password"  className={classes.forgotPassword} >Forgot password?</Link>  */}
+                              {/* {errorMessage && <p className="errorMessage">{errorMessage}</p>} */}
+                              <button type='submit' >Login </button>
                         </form>
                   </div>
             </section>

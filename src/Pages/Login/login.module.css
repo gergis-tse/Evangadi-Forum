@@ -9,14 +9,12 @@ body {
       align-items: center;
       height: 100vh;
 }
-
 section {
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: poppins, sans-serif;
 }
-
 .loginContainer {
       background: #fff;
       border-radius: 10px;
@@ -26,82 +24,70 @@ section {
       text-align: center;
 }
 
-h1 {
+.loginContainer h1 {
   font-size: 1.5rem;
-      font-weight: 500;
-      color: #1e293b;
+      font-weight: bald;
+      color: #414957;
       /* margin-bottom: 12px; */
 }
-
-p {
-      font-size: 0.9rem;
+.loginContainer p {
+      font-size: 0.98rem;
+      font-weight: 500;
       color: #64748b;
       margin-bottom: 40px;
 }
-
-p a {
-      color: #DA7000;
-      font-weight: 400;
+.loginContainer p a {
+      color: #f39d41;
+      font-weight: 500;
       text-decoration: none;
 }
-
-p a:hover {
-      text-decoration: none;
-}
-
-
 .inputContainer {
       position: relative;
       /* margin-bottom: 20px; */
       text-align: left;
 }
-
-
 input {
       width: 96%;
       padding: 12px 0px;       
       padding-left: 15px;   
-      border: 1px solid #e2e8f0;
+      border: 2px solid #e2e8f0;
       border-radius: 6px;
       font-size: 1rem;
       color: #334155;
       outline: none;
       transition: border-color 0.3s ease;
-      background: #E8F0FE;
+      /* background: #E8F0FE; */
 }
-
 input:focus {
-      border-color: #DA7000;
+      border-color: #ee810d;
       box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 .togglePassword {
       position: absolute;
-      right: 12px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
       color: #94a3b8;
 }
-
 .togglePassword:hover {
       color: #64748b;
 }
-
+.forgotPasswordContainer {
+      text-align: right;
+      margin-bottom: 20px;
+      margin-top: 20px;
+}
 .forgotPassword {
       text-align: right;
       font-size: 0.9rem;
-      color: #DA7000;
+      color: #f39d41;
       font-weight: 400;
       margin-bottom: 20px;
       cursor: pointer;
       text-decoration: none;
 }
-
-.forgotPassword:hover {
-      text-decoration: none ;
-}
-
 button {
       width: 100%;
       padding: 16px;
@@ -115,7 +101,6 @@ button {
       cursor: pointer;
       transition: background-color 0.3s ease;
 }
-
 button:hover {
   background-color: #4f46e5;
 }
