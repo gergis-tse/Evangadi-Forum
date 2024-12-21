@@ -6,7 +6,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axiosBase from "../../utility/axios";
 
-const  Signup=({ onToggle}) =>{
+const Signup = ({ onToggle }) => {
   const [showpassword, setShowpassword] = useState(false);
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const  Signup=({ onToggle}) =>{
       });
       alert("User registered successfully. Please login");
 
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.response?.data?.message || "Registration failed");
     }
@@ -160,6 +160,6 @@ const  Signup=({ onToggle}) =>{
       </div>
     </section>
   );
-}
+};
 
 export default Signup;

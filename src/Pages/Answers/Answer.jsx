@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import api from "../Utility/axiosConfig";
+import api from "../../utility/axios";
 import styles from "./Answer.module.css";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
@@ -25,8 +25,8 @@ function Answer() {
       const response = await api({
         url: `/question/${question_id}`,
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       setQuestion(response?.data?.questions[0]);
@@ -39,8 +39,8 @@ function Answer() {
     try {
       const allAnswerList = await api.get(`/answer/${question_id}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       const answerData = allAnswerList.data.answers;
@@ -71,8 +71,8 @@ function Answer() {
         { answer: sendAns, questionid: question_id },
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       alert("Answer posted successfully!");
@@ -103,14 +103,14 @@ function Answer() {
             Username: <span>{user.username}</span>
           </div>
         </div>
-          <div className={styles.arrow}>
-            <span>
-              <FaCircleArrowRight />
-            </span>
-            {question?.title}
-          </div>
-          <div className={styles.desc}>{question?.description}</div>
-<hr />
+        <div className={styles.arrow}>
+          <span>
+            <FaCircleArrowRight />
+          </span>
+          {question?.title}
+        </div>
+        <div className={styles.desc}>{question?.description}</div>
+        <hr />
         <div className="communityAns">
           <h3 className={styles.community}>Answers from the Community</h3>
           <hr />
@@ -122,13 +122,11 @@ function Answer() {
                 <div className={styles.AnswerPg}>
                   {/* User Avatar and Name */}
                   <div className={styles.avatar}>
-                    {<FaUserAlt className={styles.avatar_img}/>}
+                    {<FaUserAlt className={styles.avatar_img} />}
                     <div>{answer.user_name}</div>
                   </div>
 
-                  <div className={styles.content}>
-                    {answer.content}
-                  </div>
+                  <div className={styles.content}>{answer.content}</div>
                 </div>
               </div>
             ))

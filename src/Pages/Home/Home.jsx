@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AppState } from "../../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AllQuestions from "../Question/AllQuestions/AllQuestions";
 import classes from "./Home.module.css";
 
 function Home() {
 	const { user } = useContext(AppState);
+	const navigate=useNavigate()
+	if(!user){
+		navigate("/")
+	}
 	return (
 		<div className={classes.outerContainer}>
 			<div>

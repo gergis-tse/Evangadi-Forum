@@ -1,6 +1,9 @@
+.wrapper {
+  margin-top: 60vh !important;
+}
 .container {
   width: 80%;
-  margin: 60px auto;
+  margin: 100px auto 0;
   padding: 30px 0;
 }
 .AnswerPg {
@@ -73,13 +76,13 @@
 }
 .answer_form button {
   border: none;
-  background-color:#516CF0;
+  background-color: #516cf0;
   padding: 7px 20px;
   opacity: 0.65;
   color: white;
   cursor: pointer;
   margin-top: 20px;
-  width: 20%;
+  width: 28%;
   border-radius: 5px;
 }
 .answer_form textarea {
@@ -113,4 +116,12 @@
 }
 .answer_form {
   position: relative;
+}
+@media (max-width: 768px) {
+  .wrapper {
+    margin-top: 90vh !important;
+  }
+  .answer_form button {
+    width: 40%;
+  }
 }

@@ -23,6 +23,10 @@
   align-items: center;
   list-style: none;
 }
+.RightWrapper ul li a{
+  text-decoration: none;
+  color: #000;
+}
 .RightWrapper ul li a:hover {
   color: var(--orange-color);
 }

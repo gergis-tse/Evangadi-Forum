@@ -10,7 +10,7 @@ function Footer() {
       <div className={classes.container}>
         <div>
           <div>
-            <Link to="/">
+            <Link to="/home">
               <img
                 src="https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-footer.png"
                 alt="evangadi logo"

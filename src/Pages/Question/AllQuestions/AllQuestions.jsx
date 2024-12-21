@@ -3,7 +3,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { FaUserAlt } from "react-icons/fa";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { MdNavigateNext } from "react-icons/md";
-import axios from "../../Utility/axiosConfig";
+import axios from "../../../utility/axios";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./AllQuestions.module.css";
 
