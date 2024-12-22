@@ -32,7 +32,7 @@ function Home() {
 						</div>
 						<h3 className={classes.welcome}>
 							Welcome:
-							<span style={{ fontWeight: "bold" }}> {user.username}</span>
+							<span style={{ fontWeight: "bold" }}> {user?.username}</span>
 						</h3>
 					</div>
 					<div>
