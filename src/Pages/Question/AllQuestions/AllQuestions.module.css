@@ -98,4 +98,7 @@ p {
 }
 .profile {
   margin-right: 100px;
+  border: solid 2px black;
+  border-radius: 50%;
+  padding: 20px
 }
