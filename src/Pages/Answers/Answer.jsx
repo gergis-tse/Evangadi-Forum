@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import api from "../Utility/axiosConfig";
+import api from "../../utility/axios";
 import styles from "./Answer.module.css";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
@@ -79,7 +79,7 @@ function Answer() {
 
       // allQuestions();
       setsendAns("");
-      setError3("")
+      setError3("");
       allQuestions();
     } catch (error) {
       setError3(error?.response?.data?.message);
@@ -97,23 +97,22 @@ function Answer() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h4>Question</h4>
-        <p className={styles.answerUser}>
-          Username: <span>{user.username}</span>
-        </p>
-        <h6>
-          <p>
-            <span>
-              <FaCircleArrowRight />
-            </span>
-            {question?.title}
-          </p>
-          <p>{question?.description}</p>
-        </h6>
+        <div className={styles.username}>
+          <h4>Question</h4>
+          <div className={styles.user}>
+            Username: <span>{user.username}</span>
+          </div>
+        </div>
+        <div className={styles.arrow}>
+          <span>
+            <FaCircleArrowRight />
+          </span>
+          {question?.title}
+        </div>
+        <div className={styles.desc}>{question?.description}</div>
         <hr />
-
-        <div>
-          <h3 className="communityAns">Answers from the Community</h3>
+        <div className="communityAns">
+          <h3 className={styles.community}>Answers from the Community</h3>
           <hr />
         </div>
         <div className={styles.AllAns}>
@@ -122,14 +121,12 @@ function Answer() {
               <div key={answer.answer_id}>
                 <div className={styles.AnswerPg}>
                   {/* User Avatar and Name */}
-                  <div>
-                    <h1>{<FaUserAlt />}</h1>
+                  <div className={styles.avatar}>
+                    {<FaUserAlt className={styles.avatar_img} />}
                     <div>{answer.user_name}</div>
                   </div>
 
-                  <div>
-                    <p>{answer.content}</p>
-                  </div>
+                  <div className={styles.content}>{answer.content}</div>
                 </div>
               </div>
             ))
@@ -139,8 +136,8 @@ function Answer() {
         </div>
 
         <div className={styles.answer_form}>
-          <h4 className="text-center mb-5">Your Answer</h4>
-          {error3 && <span style={{color:"red"}}>{error3}</span>}
+          <h4 className={styles.urAns}>Your Answer</h4>
+          {error3 && <span style={{ color: "red" }}>{error3}</span>}
           <form onSubmit={sendAnswers}>
             <textarea
               className="form-control"

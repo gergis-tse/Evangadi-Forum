@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import logo from "../../assets/Images/logo.png";
 import styles from "./Header.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../Pages/Utility/axiosConfig";
+import api from "../../utility/axios";
 import { AppState } from "../../App";
 const Header = () => {
   const {user,setUser} = useContext(AppState);

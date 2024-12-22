@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import classes from "./askQuestion.module.css";
 import axiosBase from "../../../utility/axios.js";
 import { useNavigate } from "react-router-dom";
-import Layout from "../../../Components/Layout/Layout.jsx";
+
 
 function AskQuestion() {
 	const navigate = useNavigate();
@@ -63,7 +63,7 @@ function AskQuestion() {
 	}
 
 	return (
-		<Layout>
+	
 			<div className={classes.allContainer}>
 				<div className={classes.question__container}>
 					<div className={classes.question__wrapper}>
@@ -119,7 +119,7 @@ function AskQuestion() {
 					</div>
 				</div>
 			</div>
-		</Layout>
+		
 	);
 }
 

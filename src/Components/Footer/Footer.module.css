@@ -6,6 +6,7 @@ body {
 .outer_container {
   background-color: #3a4559;
   width: 100vw !important;
+  
 }
 .container {
   display: flex;
@@ -19,6 +20,7 @@ body {
 }
 .container a {
   color: #ffffff39;
+  text-decoration: none;
 }
 .container a p:hover {
   color: #ffffffcc;

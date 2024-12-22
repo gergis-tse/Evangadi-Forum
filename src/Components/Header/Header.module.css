@@ -5,6 +5,7 @@
   background-color: white;
   position: sticky;
   top: 0;
+  margin-bottom: 10vh
 }
 .HeaderWrapper {
   display: flex;
@@ -21,6 +22,10 @@
   justify-content: center;
   align-items: center;
   list-style: none;
+}
+.RightWrapper ul li a{
+  text-decoration: none;
+  color: #000;
 }
 .RightWrapper ul li a:hover {
   color: var(--orange-color);
