@@ -1,5 +1,6 @@
 .wrapper {
-  margin-top: 45vh !important;
+  margin-top: 50vh !important;
+  
 }
 .container {
   width: 80%;
@@ -118,10 +119,15 @@
   position: relative;
 }
 @media (max-width: 768px) {
-  .wrapper {
-    margin-top: 90vh !important;
-  }
   .answer_form button {
     width: 40%;
+
+  }
+}
+
+@media (max-width: 680px) {
+  .wrapper {
+    margin-top: 80vh !important;
+    
   }
 }

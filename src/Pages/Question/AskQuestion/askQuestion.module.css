@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-margin-top: 40vh;
+  /* margin-top: 40vh; */
   background-color: white;
 }
 
@@ -184,14 +184,8 @@ margin-top: 40vh;
     font-size: 1.3rem;
   }
 }
-.icon {
-  width: 15px; /* Adjust size of the circle */
-  height: 15px; /* Adjust size of the circle */
-  border-radius: 50%; /* Make it circular */
-  background-color: rgb(54, 52, 52); /* Black background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white; /* White color for the arrow */
-  font-size: 10px; /* Adjust size of the arrow */
+@media (max-width: 680px) {
+  .allContainer {
+    margin-top: 50vh;
+  }
 }

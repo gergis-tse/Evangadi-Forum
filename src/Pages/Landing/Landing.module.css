@@ -13,22 +13,22 @@
   height: 80vh;
   background-image: url("10001 (2).svg");
   background-size: cover;
-  padding:0 1rem;
+  padding: 0 1rem;
 }
 
 .right {
   flex: 1;
-  /* width: 40%; */
+  /* width: 20% !important; */
   max-width: 600px;
   margin-left: 1.5rem;
   position: static;
   /* margin: 20px, auto; */
-
-
 }
 
 .left {
   flex: 1;
+  /* width: 20% !important; */
+
   max-width: 600px;
 
   padding: 40px;
@@ -50,7 +50,5 @@
   }
   .left {
     margin-top: 50px;
-  } 
-  
+  }
 }
-
