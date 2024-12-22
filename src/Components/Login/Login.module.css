@@ -1,28 +1,30 @@
-body {
+.body {
   font-family: poppins, sans-serif;
-  background-color: #f9fafb;
-  margin: 0;
+  /* background-color: #f9fafb; */
+  margin: 50px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
-section {
+.body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   font-family: poppins, sans-serif;
 }
 .loginContainer {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 90%;
+  /* background: #fff; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  /* padding: 40px; */
+  width: 90%; 
   text-align: center;
-  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 40px;
   margin-bottom: 40px;
-  margin-left: 40px;
+  margin-left: 40px; */
 }
 
 .loginContainer h1 {

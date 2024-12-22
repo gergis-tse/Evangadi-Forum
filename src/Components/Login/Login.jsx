@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosBase from "../../utility/axios";
 import classes from "./Login.module.css";
 
-const Login = ({ onToggle }) => {
+const Login = ({ onToggle ,toggleForm}) => {
   const emailDom = useRef();
   const passwordDom = useRef();
   const navigate = useNavigate();
@@ -43,13 +43,13 @@ const Login = ({ onToggle }) => {
   }
   
     return (
-      <section>
+      <section className={classes.body}>
                   <div className={classes.loginContainer}>
                         <h1>Login to your account</h1>
                         <p>
                               Don't have an account?{" "}
                               <span
-                                  onClick={onToggle}
+                                  onClick={()=>{onToggle(),toggleForm()}}
                                     style={{
                                     color: "#DA7000",
                                     cursor: "pointer",

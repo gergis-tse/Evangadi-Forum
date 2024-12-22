@@ -20,7 +20,7 @@
 /* Home.module.css */
 
 .outerContainer {
-  margin-top: 200px;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: flex-start;
   max-height: 100vh;
@@ -81,8 +81,8 @@ input[type="text"] {
   font-size: 14px;
   background-color: #fff;
 }
-@media ( max-width: 680px) {
+@media (max-width: 680px) {
   .outerContainer {
-    margin-top: 400px;
+    /* margin-top: 400px; */
   }
 }

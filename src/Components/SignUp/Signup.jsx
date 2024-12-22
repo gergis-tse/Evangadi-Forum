@@ -1,13 +1,13 @@
-
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axiosBase from "../../utility/axios";
+import { AppState } from "../../App";
 
-const Signup = ({ onToggle }) => {
+const Signup = ({ onToggle, toggleForm }) => {
   const [showpassword, setShowpassword] = useState(false);
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Signup = ({ onToggle }) => {
     const passwordValue = passwordDom.current.value;
     const firstnameValue = firstNameDom.current.value;
     const lastnameValue = lastNameDom.current.value;
-
+    const { handleToggle } = useContext(AppState);
     try {
       await axiosBase.post("/users/register", {
         username: userValue,
@@ -43,7 +43,7 @@ const Signup = ({ onToggle }) => {
   }
   return (
     <section>
-      <div className="card">
+      <div className={classes.signcard}>
         <div className="card-body">
           <div className="text-center">
             <b>Join the network</b>
@@ -51,9 +51,11 @@ const Signup = ({ onToggle }) => {
           <div className="text-center mb-3">
             Already have an account?{" "}
             <span
-              onClick={onToggle}
+              onClick={() => {
+                onToggle(), toggleForm();
+              }}
               style={{
-                color: "red",
+                color: "#E6A055",
                 cursor: "pointer",
               }}
             >
@@ -151,7 +153,10 @@ const Signup = ({ onToggle }) => {
             <p>
               <Link
                 style={{ color: "#ff8500", textDecoration: "none" }}
-                to="/login"
+                to="/"
+                onClick={() => {
+                  onToggle(), toggleForm();
+                }}
               >
                 Already have account?
               </Link>

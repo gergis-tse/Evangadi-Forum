@@ -1,17 +1,19 @@
-.card{
+.signcard{
    /* width: 500px; */
       /* height: 70vh; */
+      height: 100% !important;
+      padding: 2% 5%;
 }
   .btnblue {
-    color: #fff !important;
-    background-color: #fe8402;
+    /* color: #fff !important; */
+    background-color: #E6A055;
     border: none;
     font-size: 15px;
     line-height: 25px;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     text-transform: uppercase;
     padding: 8px 25px !important;
-    border-radius: 0px;
+    /* border-radius: 0px; */
   }
   .btnsignup {
     background-color: #516cf0;
@@ -33,7 +35,12 @@
     right: 20px;
     cursor: pointer;
   }
-  
+  @media(max-width: 768px){
+.signcard
+{
+  /* padding: 20px 10px; */
+}
+  }
  
   
   

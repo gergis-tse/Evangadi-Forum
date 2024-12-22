@@ -16,7 +16,7 @@ function App() {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-
+  
   async function checkUser() {
     try {
       const { data } = await axiosBase.get("/users/check", {
