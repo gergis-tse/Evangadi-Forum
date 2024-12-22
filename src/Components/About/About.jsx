@@ -23,7 +23,7 @@ const About = () => {
             network here.
           </p>
           <button className={styles.createAccount}>
-            <Link to="/signup"> CREATE A NEW ACCOUNT  </Link>
+            <Link to="/"> CREATE A NEW ACCOUNT  </Link>
           </button>
         </div>
       </div>

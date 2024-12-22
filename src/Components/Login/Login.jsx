@@ -59,6 +59,7 @@ const Login = ({ onToggle ,toggleForm}) => {
             </span>
                               {/* <Link to="/signup">Create new account</Link> */}
                         </p>
+                        {errorMessage && <span style={{"color":"red","paddingBottom":"10px"}}>{errorMessage}</span>}
                         <form className={classes.loginForm} onSubmit={handleSubmit}>                       
                               <div className={classes.inputContainer}> 
                                     <input 
