@@ -20,10 +20,12 @@
 /* Home.module.css */
 
 .outerContainer {
+  margin-top: 200px;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
+  max-height: 100vh;
   background-color: #fff;
+  overflow-y: scroll;
 }
 
 .container {
