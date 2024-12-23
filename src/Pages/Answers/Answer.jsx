@@ -12,7 +12,6 @@ function Answer() {
 
   const { user, setUser } = useContext(AppState);
   const [answers, setAnswers] = useState([]);
-  const [title, setTitle] = useState([]);
   const [sendAns, setsendAns] = useState("");
   const [error1, setError1] = useState(null);
   const [error2, setError2] = useState(null);
@@ -44,11 +43,7 @@ function Answer() {
       });
 
       const answerData = allAnswerList.data.answers;
-      console.log(answerData);
-
-      // const allAnswers = answerData.filter(
-      //   (answer) => String(answer.question_id) === question_id
-      // );
+      // console.log(answerData);
       setAnswers(answerData);
     } catch (error) {
       console.log(error);
@@ -63,7 +58,6 @@ function Answer() {
       setError3("Answer field cannot be empty!");
       return;
     }
-
     try {
       // Post a new answer
       const postAns = await api.post(
@@ -125,7 +119,6 @@ function Answer() {
                     {<FaUserAlt className={styles.avatar_img} />}
                     <div>{answer.user_name}</div>
                   </div>
-
                   <div className={styles.content}>{answer.content}</div>
                 </div>
               </div>
@@ -134,7 +127,6 @@ function Answer() {
             <h4 className={styles.no_answer}>No answers yet!</h4>
           )}
         </div>
-
         <div className={styles.answer_form}>
           <h4 className={styles.urAns}>Your Answer</h4>
           {error3 && <span style={{ color: "red" }}>{error3}</span>}

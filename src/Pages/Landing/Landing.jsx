@@ -9,10 +9,7 @@ const Landing = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [transitionDirection, setTransitionDirection] =
     useState("slide-in-right");
-  const handleToggle = () => {
-    setIsLogin((prev) => !prev); // Toggle between Login and Signup
-  };
-
+ 
   const toggleForm = () => {
     if (isLogin) {
       setTransitionDirection("slide-out-left");
@@ -37,9 +34,9 @@ const Landing = () => {
             className={`${styles.left_inner} ${styles[transitionDirection]}`}
           >
             {isLogin ? (
-              <Login onToggle={handleToggle} toggleForm={toggleForm} />
+              <Login  toggleForm={toggleForm} />
             ) : (
-              <Signup onToggle={handleToggle} toggleForm={toggleForm} />
+              <Signup  toggleForm={toggleForm} />
             )}
           </div>
         </div>

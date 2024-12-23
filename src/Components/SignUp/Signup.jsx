@@ -7,7 +7,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import axiosBase from "../../utility/axios";
 import { AppState } from "../../App";
 
-const Signup = ({ onToggle, toggleForm }) => {
+const Signup = ({  toggleForm }) => {
   const [showpassword, setShowpassword] = useState(false);
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Signup = ({ onToggle, toggleForm }) => {
     const passwordValue = passwordDom.current.value;
     const firstnameValue = firstNameDom.current.value;
     const lastnameValue = lastNameDom.current.value;
-    const { handleToggle } = useContext(AppState);
+   
     try {
       await axiosBase.post("/users/register", {
         username: userValue,
@@ -35,7 +35,7 @@ const Signup = ({ onToggle, toggleForm }) => {
         lastname: lastnameValue,
       });
       alert("User registered successfully. Please login");
-
+      onToggle()
       navigate("/");
     } catch (error) {
       setErrorMessage(error.response?.data?.message || "Registration failed");
@@ -52,7 +52,7 @@ const Signup = ({ onToggle, toggleForm }) => {
             Already have an account?{" "}
             <span
               onClick={() => {
-                onToggle(), toggleForm();
+               toggleForm();
               }}
               style={{
                 color: "#E6A055",
@@ -69,6 +69,7 @@ const Signup = ({ onToggle, toggleForm }) => {
               {errorMessage}
             </span>
           )}
+          
           <form onSubmit={handleSubmit}>
             <input
               ref={userNameDom}
@@ -155,7 +156,7 @@ const Signup = ({ onToggle, toggleForm }) => {
                 style={{ color: "#ff8500", textDecoration: "none" }}
                 to="/"
                 onClick={() => {
-                  onToggle(), toggleForm();
+                 toggleForm();
                 }}
               >
                 Already have account?
