@@ -6,6 +6,8 @@ import classes from "./Home.module.css";
 
 function Home() {
   const { user } = useContext(AppState);
+  console.log(user.username);
+  
   const navigate = useNavigate();
   if (!user) {
     navigate("/");

@@ -2,11 +2,9 @@ import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
 import axiosBase from "../../utility/axios";
-import { AppState } from "../../App";
-
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 const Signup = ({  toggleForm }) => {
   const [showpassword, setShowpassword] = useState(false);
 
@@ -35,7 +33,7 @@ const Signup = ({  toggleForm }) => {
         lastname: lastnameValue,
       });
       alert("User registered successfully. Please login");
-      onToggle()
+      toggleForm()
       navigate("/");
     } catch (error) {
       setErrorMessage(error.response?.data?.message || "Registration failed");
@@ -78,6 +76,7 @@ const Signup = ({  toggleForm }) => {
               name="username"
               id=""
               className="form-control"
+              required
             />
             <br />
             <div className="row">
@@ -88,7 +87,8 @@ const Signup = ({  toggleForm }) => {
                   type="text"
                   name="firstname"
                   id=""
-                  className="form-control"
+                  className={`form-control ${classes.first_name}`}
+                  required
                 />
               </div>
               <div class="col-md-6">
@@ -99,6 +99,7 @@ const Signup = ({  toggleForm }) => {
                   name="lastname"
                   id=""
                   className="form-control"
+                  required
                 />
               </div>
             </div>
@@ -110,6 +111,7 @@ const Signup = ({  toggleForm }) => {
               name="email"
               id=""
               className="form-control"
+              required
             />
             <br />
             <div className={classes.password_container}>
@@ -120,13 +122,14 @@ const Signup = ({  toggleForm }) => {
                 name="password"
                 id=""
                 className="form-control"
+                required
               />
               <br />
               <div
                 className={classes.password}
                 onClick={() => setShowpassword((prev) => !prev)}
               >
-                {showpassword ? <FaEye /> : <FaEyeSlash />}
+                {showpassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </div>
             </div>
 

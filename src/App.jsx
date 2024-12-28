@@ -24,7 +24,7 @@ function App() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser(data);
+       setUser(data);
     } catch (error) {
       console.log(error.response?.data?.message || "An error occurred");
 
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [token]);
 
   return (
     <>

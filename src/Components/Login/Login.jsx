@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosBase from "../../utility/axios";
 import classes from "./Login.module.css";
 
-const Login = ({  toggleForm}) => {
+const Login = ({ toggleForm }) => {
   const emailDom = useRef();
   const passwordDom = useRef();
   const navigate = useNavigate();
@@ -41,57 +41,65 @@ const Login = ({  toggleForm}) => {
       console.log(errorMsg);
     }
   }
-  
-    return (
-      <section className={classes.body}>
-                  <div className={classes.loginContainer}>
-                        <h1>Login to your account</h1>
-                        <p>
-                              Don't have an account?{" "}
-                              <span
-                                  onClick={()=>{toggleForm()}}
-                                    style={{
-                                    color: "#DA7000",
-                                    cursor: "pointer",
-                                    }}
+
+  return (
+    <section className={classes.body}>
+      <div className={classes.loginContainer}>
+        <h1>Login to your account</h1>
+        <p>
+          Don't have an account?{" "}
+          <span
+            onClick={() => {
+              toggleForm();
+            }}
+            style={{
+              color: "#DA7000",
+              cursor: "pointer",
+            }}
+          >
+            Create new account
+          </span>
+          {/* <Link to="/signup">Create new account</Link> */}
+        </p>
+        {errorMessage && (
+          <span style={{ color: "red", paddingBottom: "10px" }}>
+            {errorMessage}
+          </span>
+        )}
+        <form className={classes.loginForm} onSubmit={handleSubmit}>
+          <div className={classes.inputContainer}>
+            <input
+              ref={emailDom}
+              type="email"
+              placeholder="Email address"
+              required
+            />
+          </div>
+          <br />
+          <div className={classes.inputContainer}>
+            <input
+              ref={passwordDom}
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              required
+            />
+            <span
+              className={classes.togglePassword}
+              onClick={togglePasswordVisibility}
             >
-              Create new account
+              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </span>
-                              {/* <Link to="/signup">Create new account</Link> */}
-                        </p>
-                        {errorMessage && <span style={{"color":"red","paddingBottom":"10px"}}>{errorMessage}</span>}
-                        <form className={classes.loginForm} onSubmit={handleSubmit}>                       
-                              <div className={classes.inputContainer}> 
-                                    <input 
-                                          ref={emailDom} 
-                                          type="email" 
-                                          placeholder='Email address' 
-                                          required/>
-                              </div>
-                              <br />
-                              <div className={classes.inputContainer}>  
-                                    <input 
-                                          ref={passwordDom} 
-                                          type={showPassword? 'text': "password"} 
-                                          placeholder='Password'
-                                          required/>
-                                    <span 
-                                          className={classes.togglePassword}
-                                          onClick={togglePasswordVisibility}> 
-                                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                                    </span>
-                              </div>
-                              <div className={classes.forgotPasswordContainer}>
-                                    <Link to="/forgot-password"  className={classes.forgotPassword} >Forgot password?</Link>
-
-                              </div>
-                              <button type='submit' >Login </button>
-                        </form>
-                  </div>
-            </section>
-      
-    );
-  };
-
+          </div>
+          <div className={classes.forgotPasswordContainer}>
+            <Link to="/forgot-password" className={classes.forgotPassword}>
+              Forgot password?
+            </Link>
+          </div>
+          <button type="submit">Login </button>
+        </form>
+      </div>
+    </section>
+  );
+};
 
 export default Login;

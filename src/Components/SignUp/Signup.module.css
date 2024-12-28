@@ -1,7 +1,7 @@
 .signcard{
    /* width: 500px; */
       /* height: 70vh; */
-      height: 100% !important;
+      /* height: 100% !important; */
       padding: 2% 5%;
 }
   .btnblue {
@@ -31,14 +31,14 @@
   
   .password {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 20px;
     cursor: pointer;
+    
   }
   @media(max-width: 768px){
-.signcard
-{
-  /* padding: 20px 10px; */
+.first_name {
+  margin-bottom: 26px !important;
 }
   }
  

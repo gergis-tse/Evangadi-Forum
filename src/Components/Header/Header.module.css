@@ -31,7 +31,9 @@
 .RightWrapper ul li a:hover {
   color: var(--orange-color);
 }
-
+.logo{
+  margin-left: 5px ;
+}
 .logo img {
   width: 200px;
 }

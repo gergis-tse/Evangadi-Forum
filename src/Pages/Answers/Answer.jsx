@@ -69,7 +69,6 @@ function Answer() {
           },
         }
       );
-      alert("Answer posted successfully!");
 
       // allQuestions();
       setsendAns("");
